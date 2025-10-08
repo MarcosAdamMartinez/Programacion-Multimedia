@@ -1,6 +1,9 @@
 package com.example.multimedia;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +23,21 @@ public class Activity2 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Bundle extras = getIntent().getExtras();
+        int valor = extras.getInt("MiValor");
+        String valor2 = extras.getString("MiValor2");
+
+
+        Toast.makeText(this, "Los valores recibidos son: "+valor+" y "+valor2,Toast.LENGTH_LONG).show();
+
     }
 
+    public void iniciarActivity(View view){
+
+        Intent intentActivity = new Intent(this, MainActivity.class);
+        startActivity(intentActivity);
+
+    }
 
 }

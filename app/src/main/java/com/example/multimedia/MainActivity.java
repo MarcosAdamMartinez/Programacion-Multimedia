@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
     public void iniciarActivity2(View view){
 
         Intent intentActivity = new Intent(this, Activity2.class);
+        intentActivity.putExtra("MiValor",2222);
+        intentActivity.putExtra("MiValor2","Marcos");
         startActivity(intentActivity);
 
     }
