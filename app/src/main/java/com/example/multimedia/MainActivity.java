@@ -43,8 +43,11 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
         txtMessage.setOnClickListener(this::onClickTextView);
-
-        i = 0;
+        if (savedInstanceState == null) {
+            i = 0;
+        } else {
+            i = savedInstanceState.getInt("value");
+        }
     }
 
     @Override
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i("TAB Ciclo de vida","CicloVida:OnResume");
 
         Toast.makeText(this,"App activa de nuevo",Toast.LENGTH_LONG).show();
+        i++;
     }
 
     @Override
@@ -92,6 +96,13 @@ public class MainActivity extends AppCompatActivity {
         intentActivity.putExtra("MiValor2","Marcos");
         startActivity(intentActivity);
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("value",i);
     }
 
 }
