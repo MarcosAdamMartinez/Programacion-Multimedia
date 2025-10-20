@@ -2,6 +2,7 @@ package com.example.multimedia;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.view.View;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class Activity2 extends AppCompatActivity {
         String valor2 = extras.getString("MiValor2");
 
 
-        Toast.makeText(this, "Los valores recibidos son: "+valor+" y "+valor2,Toast.LENGTH_LONG).show();
+        /*Toast.makeText(this, "Los valores recibidos son: "+valor+" y "+valor2,Toast.LENGTH_LONG).show();*/
 
     }
 
@@ -38,6 +39,14 @@ public class Activity2 extends AppCompatActivity {
         Intent intentActivity = new Intent(this, MainActivity.class);
         startActivity(intentActivity);
 
+    }
+
+    public void crearAlarma(View view){
+        Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
+                .putExtra(AlarmClock.EXTRA_MESSAGE, "Ir al trabajo")
+                .putExtra(AlarmClock.EXTRA_HOUR, 12)
+                .putExtra(AlarmClock.EXTRA_MINUTES, 25);
+        startActivity(intent);
     }
 
 }
