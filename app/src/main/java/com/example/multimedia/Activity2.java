@@ -43,6 +43,13 @@ public class Activity2 extends AppCompatActivity {
     }
 
     public void crearAlarma(View view){
+        Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
+                .putExtra(AlarmClock.EXTRA_MESSAGE, "Alarma Trabajo")
+                .putExtra(AlarmClock.EXTRA_HOUR, 12)
+                .putExtra(AlarmClock.EXTRA_MINUTES, 15);
+        startActivity(intent);
+    }
+    public void llamarNum(View view){
         String numeroTel = "+34643660866";
         Uri marcar = Uri.parse("tel:" + numeroTel);
         Intent intent = new Intent(Intent.ACTION_DIAL, marcar);
